@@ -15,7 +15,7 @@ int main(int argc,char** argv)
 	else
 		env->SetUseMuscle(false);
 	env->SetControlHz(30);
-	env->SetSimulationHz(600);
+	env->SetSimulationHz(900);
 
 	MASS::Character* character = new MASS::Character();
 	character->LoadSkeleton(std::string(MASS_ROOT_DIR)+std::string("/data/human.xml"),true);
@@ -42,6 +42,6 @@ int main(int argc,char** argv)
 	else if (argc==3)
 		window = new MASS::Window(env,argv[1],argv[2]);
 	
-	window->initWindow(1920,1080,"gui");
+	window->initWindow(540,1080,"gui");
 	glutMainLoop();
 }

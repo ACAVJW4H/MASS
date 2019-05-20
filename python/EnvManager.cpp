@@ -12,7 +12,7 @@ EnvManager(int num_envs)
 		mEnvs.push_back(new MASS::Environment());
 		MASS::Environment* env = mEnvs.back();
 
-		env->SetUseMuscle(false);
+		env->SetUseMuscle(true);
 		env->SetControlHz(30);
 		env->SetSimulationHz(600);
 		env->SetRewardParameters(0.65,0.1,0.15,0.1);
@@ -22,7 +22,7 @@ EnvManager(int num_envs)
 		if(env->GetUseMuscle())
 			character->LoadMuscles(std::string(MASS_ROOT_DIR)+std::string("/data/muscle.xml"));
 
-		character->LoadBVH(std::string(MASS_ROOT_DIR)+std::string("/data/motion/pirouette.bvh"),false);
+		character->LoadBVH(std::string(MASS_ROOT_DIR)+std::string("/data/motion/walk.bvh"),false);
 		
 		double kp = 300.0;
 		character->SetPDParameters(kp,sqrt(2*kp));

@@ -61,6 +61,7 @@ class MuscleNN(nn.Module):
 			self.std_tau = self.std_tau.cuda()
 			self.std_muscle_tau = self.std_muscle_tau.cuda()
 		self.fc.apply(weights_init)
+
 	def forward(self,muscle_tau,tau):
 		muscle_tau = muscle_tau/self.std_muscle_tau
 
@@ -70,7 +71,7 @@ class MuscleNN(nn.Module):
 
 	def load(self,path):
 		print('load muscle nn {}'.format(path))
-		self.load_state_dict(torch.load(path))
+		self.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
 
 	def save(self,path):
 		print('save muscle nn {}'.format(path))
@@ -128,7 +129,12 @@ class SimulationNN(nn.Module):
 
 	def load(self,path):
 		print('load simulation nn {}'.format(path))
-		self.load_state_dict(torch.load(path))
+
+		loadtorch = torch.load(path, map_location=torch.device('cpu'));
+		print("loading torch")
+		self.load_state_dict(loadtorch)
+
+		print("pikapika")
 
 	def save(self,path):
 		print('save simulation nn {}'.format(path))

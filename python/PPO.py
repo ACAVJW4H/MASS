@@ -61,7 +61,7 @@ class ReplayBuffer(object):
 class PPO(object):
 	def __init__(self):
 		np.random.seed(seed = int(time.time()))
-		self.num_slaves = 16
+		self.num_slaves = 8
 		self.env = EnvManager(self.num_slaves)
 		self.use_muscle = self.env.UseMuscle()
 		self.num_state = self.env.GetStateDofs()
